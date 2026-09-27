@@ -1,0 +1,312 @@
+.form {
+  display: grid;
+  gap: 1.25rem;
+  width: min(100%, 72rem);
+  margin-inline: auto;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  background: color-mix(in srgb, var(--color-surface) 88%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-brand) 12%, transparent);
+  box-shadow: 0 18px 50px color-mix(in srgb, var(--color-ink) 8%, transparent);
+  backdrop-filter: blur(10px);
+}
+
+.field {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.phoneRow {
+  display: grid;
+  grid-template-columns: minmax(4rem, 6rem) minmax(0, 1fr);
+  gap: 0.75rem;
+}
+
+.label {
+  color: var(--color-brand);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.input,
+.textarea,
+.select {
+  width: 100%;
+  border: 1px solid color-mix(in srgb, var(--color-brand) 18%, transparent);
+  background: var(--color-surface);
+  color: var(--color-ink);
+  font: inherit;
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    transform 160ms ease;
+}
+
+.input {
+  min-height: 3rem;
+  padding: 0.85rem 1rem;
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 10rem;
+  padding: 1rem;
+  line-height: 1.6;
+}
+
+.select {
+  min-height: 3rem;
+  padding: 0.85rem 0.9rem;
+}
+
+.fileInput {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.fileButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  justify-self: start;
+  gap: 0.65rem;
+  min-height: 3.25rem;
+  padding: 0.85rem 1.2rem;
+  border: 1px solid var(--color-brand);
+  color: var(--color-brand);
+  background: color-mix(in srgb, var(--color-surface) 75%, transparent);
+  font: inherit;
+  font-size: 0.86rem;
+  font-weight: 600;
+  transition:
+    background-color 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
+  cursor: pointer;
+}
+
+.fileButton:hover {
+  color: var(--color-surface);
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  transform: translateY(-0.12rem);
+}
+
+.fileInput:focus-visible + .fileButton,
+.fileInput:focus + .fileButton {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 0.2rem;
+}
+
+
+.helperText {
+  margin: 0;
+  color: var(--color-accent);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.fileSummary {
+  display: grid;
+  gap: 0.75rem;
+  padding: 0.75rem 0.85rem;
+  border: 1px solid color-mix(in srgb, var(--color-brand) 12%, transparent);
+  background: color-mix(in srgb, var(--color-accent) 4%, transparent);
+}
+
+.fileSummaryTitle {
+  margin: 0;
+  color: var(--color-brand);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.fileList {
+  display: grid;
+  list-style: none;
+  gap: 0.35rem;
+  margin: 0;
+  padding-left: 0.35rem;
+}
+
+.fileItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  line-height: 1.45;
+}
+
+.fileLink {
+  display: inline-flex;
+  align-items: center;
+  min-width: 0;
+  gap: 0.6rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--color-brand);
+  font: inherit;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.fileRemove {
+  display: inline-grid;
+  flex: 0 0 auto;
+  place-items: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--color-brand);
+  cursor: pointer;
+  transition:
+    background-color 160ms ease,
+    color 160ms ease;
+}
+
+.fileRemove:hover {
+  background: color-mix(in srgb, var(--color-bulgarian-red) 10%, transparent);
+  color: var(--color-bulgarian-red);
+}
+
+.fileRemove:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 2px;
+}
+
+.fileLink:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+.fileLinkViewed {
+  color: var(--color-brand);
+  font-weight: 400;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+.fileThumbnail {
+  width: 0.9rem;
+  height: 0.9rem;
+  flex: 0 0 auto;
+  object-fit: cover;
+  border: 1px solid color-mix(in srgb, var(--color-brand) 18%, transparent);
+  background: var(--color-surface);
+}
+
+.previewOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: color-mix(in srgb, var(--color-ink) 72%, transparent);
+}
+
+.previewDialog {
+  display: grid;
+  gap: 0.75rem;
+  width: min(92vw, 34rem);
+  max-height: 90vh;
+  padding: 1rem;
+  overflow: auto;
+  background: var(--color-surface);
+  box-shadow: 0 24px 80px color-mix(in srgb, var(--color-ink) 28%, transparent);
+}
+
+.previewClose {
+  justify-self: end;
+  padding: 0.5rem 0.8rem;
+  border: 0;
+  background: var(--color-surface-alt);
+  color: var(--color-brand);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.previewModalImage {
+  width: 100%;
+  max-height: 70vh;
+  object-fit: contain;
+  background: var(--color-surface);
+}
+
+.previewCaption {
+  margin: 0;
+  color: var(--color-brand);
+  font-size: 0.92rem;
+  word-break: break-word;
+}
+
+.input:focus,
+.textarea:focus,
+.select:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-accent) 14%, transparent);
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.65rem;
+}
+
+.submitButton {
+  min-width: 12rem;
+}
+
+.statusText {
+  margin: 0;
+  color: var(--color-brand);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.success {
+  display: grid;
+  gap: 0.75rem;
+  padding: clamp(1.5rem, 3vw, 2rem);
+  background: color-mix(in srgb, var(--color-surface) 92%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-accent) 20%, transparent);
+  box-shadow: 0 18px 50px color-mix(in srgb, var(--color-ink) 8%, transparent);
+}
+
+.successTitle {
+  margin: 0;
+  color: var(--color-brand);
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.successText {
+  margin: 0;
+  color: var(--color-accent);
+  line-height: 1.7;
+}
+
+@media (max-width: 800px) {
+  .phoneRow {
+    grid-template-columns: 1fr;
+  }
+
+  .fileButton {
+    margin: 0;
+    padding: 0.85rem 1rem;
+    text-align: center;
+  }
+}
+

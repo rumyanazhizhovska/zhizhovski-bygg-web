@@ -1,0 +1,112 @@
+.main {
+  width: min(100% - 4rem, var(--page-width));
+  margin-inline: auto;
+  padding-block: var(--header-height-space);
+}
+
+.container {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: clamp(1.5rem, 2vw, 4.5rem);
+  align-items: end;
+  margin-bottom: clamp(3.5rem, 6vw, 6rem);
+  padding-bottom: clamp(1.5rem, 3vw, 2.5rem);
+  border-bottom: 1px solid var(--color-line);
+}
+
+.container::before {
+  content: "";
+  position: absolute;
+  top: calc(-1 * (var(--header-height) + clamp(1rem, 2vw, 2rem)));
+  right: -12vw;
+  bottom: 0;
+  width: min(60vw, 52rem);
+  pointer-events: none;
+  opacity: 0.62;
+  background: radial-gradient(
+      circle at 52% 89%,
+      color-mix(in srgb, var(--color-accent) 25%, transparent),
+      transparent 23%
+    ),
+    radial-gradient(
+      circle at 28% 34%,
+      color-mix(in srgb, var(--color-accent) 18%, transparent),
+      transparent 53%
+    ),
+    radial-gradient(
+      circle at 78% 30%,
+      color-mix(in srgb, var(--color-accent) 18%, transparent),
+      transparent 13%
+    ),
+    linear-gradient(var(--color-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-grid) 1px, transparent 1px);
+  background-size:
+    auto,
+    auto,
+    auto,
+    auto,
+    2.25rem 2.25rem,
+    2.25rem 2.25rem;
+  mask-image: radial-gradient(circle at 60% 42%, var(--color-ink) 0, transparent 78%);
+  z-index: 0;
+}
+
+.header {
+  position: relative;
+  z-index: 1;
+  max-width: 58rem;
+}
+
+.eyebrow {
+  margin-bottom: 1.25rem;
+  color: var(--color-accent);
+  font-size: 0.72rem;
+  font-weight: 750;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+/* .header h1 {
+  color: var(--color-brand);
+  font-size: clamp(1.6rem, 3.75vw, 3rem);
+  font-weight: 600;
+  line-height: 1;
+} */
+
+/* .header p {
+  color: var(--color-accent);
+  font-size: 1.05rem;
+  line-height: 1.8;
+} */
+
+.container h1 {
+  max-width: 14ch;
+  color: var(--color-ink);
+  font-size: clamp(3rem, 7vw, 7rem);
+  font-weight: 620;
+  letter-spacing: -0.06em;
+  line-height: 0.9;
+}
+
+.intro {
+  max-width: 46rem;
+  margin-top: 2rem;
+  color: var(--color-body);
+  font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+  line-height: 1.75;
+}
+
+@media (max-width: 800px) {
+  .main {
+    width: 100%;
+    padding-top: var(--header-height-space-mobile);
+  }
+
+  .container {
+    grid-template-columns: 1fr;
+    margin-bottom: 5rem;
+  }
+
+}

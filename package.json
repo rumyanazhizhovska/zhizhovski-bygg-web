@@ -1,0 +1,36 @@
+{
+  "name": "next-prosjekt",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit --incremental false",
+    "check": "npm run typecheck && npm run build"
+  },
+  "dependencies": {
+    "@formspree/react": "^3.0.0",
+    "@vercel/analytics": "^2.0.1",
+    "lucide-react": "^1.22.0",
+    "next": "^16.2.12",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "19.2.17",
+    "@types/react-dom": "19.2.3",
+    "eslint": "^10.8.0",
+    "eslint-config-next": "^0.2.4",
+    "postcss": "^8.5.25",
+    "prettier": "^3.3.3",
+    "typescript": "^5"
+  },
+  "overrides": {
+    "@types/react": "19.2.17",
+    "@types/react-dom": "19.2.3",
+    "postcss": "^8.5.25",
+    "sharp": "^0.35.3"
+  }
+}

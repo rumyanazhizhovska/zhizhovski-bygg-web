@@ -1,0 +1,22 @@
+/* Layout: container, wrapper, header, main, footer */
+.main {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-x: hidden;
+  padding-top: var(--header-height-space);
+  padding: 2rem;
+  padding-bottom: 1rem;
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  margin: 0;
+}

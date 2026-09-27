@@ -1,0 +1,203 @@
+/* Tjenestespesifikk layout. Prosjektkatalogen har egne komponenter og stiler. */
+.layout {
+  display: grid;
+  grid-template-columns: minmax(15rem, 20rem) minmax(0, 1fr);
+  gap: clamp(3rem, 7vw, 8rem);
+  align-items: start;
+}
+
+.content {
+  min-width: 0;
+}
+
+.section {
+  padding-block: 4rem clamp(6rem, 10vw, 10rem);
+  scroll-margin-top: var(--header-height-space);
+}
+
+.section:first-child {
+  padding-top: 4rem;
+}
+
+.section:last-child {
+  padding-bottom: 2rem;
+}
+
+.sectionHeader {
+  display: grid;
+  grid-template-columns: 3rem minmax(0, 1fr);
+  gap: clamp(1rem, 2vw, 2rem);
+  align-items: start;
+  margin-bottom: clamp(2rem, 4vw, 3.5rem);
+}
+
+.sectionNumber {
+  padding-top: 0.55rem;
+  color: var(--color-bulgarian-red);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+}
+
+.eyebrow {
+  margin-bottom: 0.85rem;
+  color: var(--color-accent);
+  font-size: 0.72rem;
+  font-weight: 750;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.sectionTitle {
+  max-width: 17ch;
+  margin-bottom: 0.25rem;
+  color: var(--color-ink);
+  font-size: clamp(2.35rem, 4.8vw, 4.4rem);
+  font-weight: 650;
+  letter-spacing: -0.055em;
+  line-height: 0.96;
+  text-wrap: balance;
+  position: relative;
+  padding-bottom: 0.18rem;
+}
+
+.sectionText {
+  max-width: 47rem;
+  color: var(--color-body);
+  font-size: clamp(1rem, 1.25vw, 1.18rem);
+  line-height: 1.75;
+}
+
+.servicesList {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--color-line);
+  list-style: none;
+}
+
+.serviceItem {
+  min-width: 0;
+  border-bottom: 1px solid var(--color-line);
+}
+
+.serviceItem:nth-child(odd) {
+  border-right: 1px solid var(--color-line);
+}
+
+.serviceLink {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 1rem;
+  min-height: 9.5rem;
+  padding: clamp(1.25rem, 2.5vw, 2rem);
+  background: linear-gradient(135deg, color-mix(in srgb, var(--color-accent) 4%, transparent), transparent 45%),
+    var(--color-surface);
+  transition:
+    background-color 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.serviceIndex {
+  padding-top: 0.22rem;
+  color: var(--color-muted);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.serviceCopy {
+  display: grid;
+  align-content: start;
+  gap: 0.65rem;
+}
+
+.serviceTitle {
+  color: var(--color-ink);
+  font-size: clamp(1.05rem, 1.4vw, 1.25rem);
+  font-weight: 650;
+  line-height: 1.25;
+}
+
+.serviceDescription {
+  max-width: 34rem;
+  color: var(--color-body);
+  font-size: 0.91rem;
+  line-height: 1.6;
+}
+
+.serviceIcon {
+  color: var(--color-muted);
+  transition:
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.serviceLink:hover {
+  background-color: var(--color-surface-strong);
+}
+
+.serviceLink:hover .serviceIcon {
+  color: var(--color-accent);
+  transform: translate(0.15rem, -0.15rem);
+}
+
+.serviceLink:focus-visible {
+  position: relative;
+  z-index: 1;
+  outline: 3px solid var(--color-focus);
+  outline-offset: -3px;
+}
+
+.categoryLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-top: 2rem;
+  color: var(--color-accent);
+  font-size: 0.9rem;
+  font-weight: 700;
+  transition:
+    color 180ms ease,
+    gap 180ms ease;
+}
+
+.categoryLink:hover {
+  gap: 0.8rem;
+  color: var(--color-brand);
+}
+
+.categoryLink:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 0.35rem;
+}
+
+@media (max-width: 800px) {
+  .layout {
+    display: block;
+  }
+
+  .content {
+    padding-top: 3rem;
+  }
+
+  .section {
+    padding-top: 6rem;
+    padding-bottom: 0;
+    scroll-margin-top: calc(var(--header-height-space-mobile) + 2rem);
+  }
+
+  .section:first-child {
+    padding-top: 6rem;
+  }
+
+  .servicesList {
+    grid-template-columns: 1fr;
+  }
+
+  .serviceItem:nth-child(odd) {
+    border-right: 0;
+  }
+}

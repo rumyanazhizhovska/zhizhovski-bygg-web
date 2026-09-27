@@ -1,0 +1,246 @@
+.main {
+  color: var(--color-ink);
+}
+
+.container,
+.catalogSection,
+.cta {
+  width: min(100% - 4rem, var(--page-width));
+  margin-inline: auto;
+}
+
+.header {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(19rem, 0.75fr);
+  gap: clamp(1.5rem, 2vw, 4.5rem);
+  align-items: end;
+  min-height: auto;
+  padding-block: var(--header-height-space);
+}
+
+.headerContent {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.header::before {
+  content: "";
+  position: absolute;
+  top: var(--header-height);
+  right: -12vw;
+  width: min(60vw, 52rem);
+  height: min(70vh, 46rem);
+  pointer-events: none;
+  opacity: 0.62;
+  background: radial-gradient(
+      circle at 62% 35%,
+      color-mix(in srgb, var(--color-accent) 16%, transparent),
+      transparent 23%
+    ),
+    linear-gradient(var(--color-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-grid) 1px, transparent 1px);
+  background-size:
+    auto,
+    2.25rem 2.25rem,
+    2.25rem 2.25rem;
+  mask-image: radial-gradient(circle at 60% 42%, var(--color-ink) 0, transparent 68%);
+}
+
+.header,
+.systemCard {
+  position: relative;
+  z-index: 1;
+}
+
+.eyebrow {
+  margin-bottom: 1.25rem;
+  color: var(--color-accent);
+  font-size: 0.7rem;
+  font-weight: 750;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.header h1 {
+  max-width: 13ch;
+  color: var(--color-ink);
+  font-size: clamp(3.2rem, 7.5vw, 7.5rem);
+  font-weight: 620;
+  letter-spacing: -0.065em;
+  line-height: 0.88;
+}
+
+.header h1 span {
+  display: block;
+  margin-top: 0.2em;
+  color: var(--color-brand);
+}
+
+.intro {
+  max-width: 49rem;
+  margin-top: 2rem;
+  color: var(--color-body);
+  font-size: clamp(1.05rem, 1.5vw, 1.22rem);
+  line-height: 1.75;
+}
+
+.headerActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 2.25rem;
+}
+
+.systemCard {
+  padding: clamp(1.25rem, 2.5vw, 2rem);
+  background: color-mix(in srgb, var(--color-surface) 86%, transparent);
+  border: 1px solid var(--color-line);
+  backdrop-filter: blur(16px);
+}
+
+.systemCard::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  right: 1.5rem;
+  width: 6rem;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    var(--color-surface) 0 33.333%,
+    var(--color-accent) 33.333% 66.666%,
+    var(--color-bulgarian-red) 66.666% 100%
+  );
+  border: 1px solid color-mix(in srgb, var(--color-brand) 10%, transparent);
+  border-block-width: 0;
+}
+
+.systemTopline {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  color: var(--color-muted);
+  border-bottom: 1px solid var(--color-line);
+  padding-bottom: 0.85rem;
+  font-size: 0.66rem;
+  font-weight: 750;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.systemCard dl {
+  margin: 0;
+}
+
+.systemCard dl div {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: baseline;
+  padding-block: 1.1rem;
+  border-bottom: 1px solid var(--color-line);
+}
+
+.systemCard dt {
+  color: var(--color-body);
+  font-size: 0.78rem;
+}
+
+.systemCard dd {
+  color: var(--color-ink);
+  font-size: 1.6rem;
+  font-weight: 600;
+  letter-spacing: -0.05em;
+}
+
+.systemCard > p {
+  margin-top: 1.25rem;
+  color: var(--color-muted);
+  font-size: 0.78rem;
+  line-height: 1.65;
+}
+
+.catalogSection {
+  padding-block: clamp(7rem, 12vw, 12rem);
+  border-top: 1px solid var(--color-line);
+  scroll-margin-top: var(--header-height);
+}
+
+.cta {
+  display: flex;
+  justify-content: space-between;
+  gap: 3rem;
+  align-items: flex-end;
+  margin-bottom: clamp(4rem, 8vw, 8rem);
+  padding: clamp(2rem, 5vw, 4rem);
+  color: var(--color-surface);
+  background: linear-gradient(120deg, color-mix(in srgb, var(--color-accent) 25%, transparent), transparent 54%),
+    var(--color-ink);
+}
+
+.cta .eyebrow {
+  color: color-mix(in srgb, var(--color-accent) 65%, var(--color-surface));
+}
+
+.cta h2 {
+  max-width: 18ch;
+  font-size: clamp(2rem, 4vw, 4rem);
+  font-weight: 600;
+  letter-spacing: -0.05em;
+  line-height: 1;
+}
+
+.hoverArrow:hover .arrowUpIcon {
+  color: var(--color-surface);
+  transition: transform 0.3s ease;
+  transform: rotate(45deg);
+}
+
+.cta .primaryAction {
+  flex: 0 0 auto;
+  color: var(--color-ink);
+  background: var(--color-surface);
+  border-color: var(--color-surface);
+}
+
+@media (max-width: 1000px) {
+  .main {
+    width: 100%;
+    padding-top: var(--header-height-space-mobile);
+  }
+
+  .container {
+    grid-template-columns: 1fr;
+    margin-bottom: 5rem;
+  }
+
+  .header,
+  .catalogSection,
+  .cta {
+    width: 100%;
+  }
+
+  .header {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    padding-top: var(--header-height-space-mobile);
+  }
+
+  .headerContent {
+    width: 100%;
+  }
+
+  .systemCard {
+    width: min(100%, 34rem);
+  }
+
+  .cta {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+

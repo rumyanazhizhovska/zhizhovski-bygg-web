@@ -1,0 +1,229 @@
+.card {
+  min-width: 0;
+  overflow: hidden;
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  box-shadow: 0 18px 55px color-mix(in srgb, var(--color-ink) 6%, transparent);
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.card:hover {
+  border-color: color-mix(in srgb, var(--color-brand) 20%, transparent);
+  box-shadow: 0 18px 55px color-mix(in srgb, var(--color-ink) 6%, transparent);
+}
+
+.placeholderCard {
+  box-shadow: 0 18px 55px color-mix(in srgb, var(--color-ink) 6%, transparent);
+}
+
+.placeholderCard:hover {
+  box-shadow: 0 18px 55px color-mix(in srgb, var(--color-ink) 6%, transparent);
+  border-color: var(--color-line);
+}
+
+.content {
+  display: grid;
+  align-content: start;
+  min-height: 16.5rem;
+  padding: clamp(1.25rem, 2.5vw, 1.75rem);
+}
+
+.statusRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.status,
+.index {
+  color: var(--color-muted);
+  font-size: 0.62rem;
+  font-weight: 750;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.status {
+  color: var(--color-accent);
+}
+
+.title {
+  color: var(--color-ink);
+  font-size: clamp(1.15rem, 1.6vw, 1.45rem);
+  font-weight: 650;
+  letter-spacing: -0.025em;
+  line-height: 1.25;
+}
+
+.titleRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.ongoingBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.2rem 0.6rem;
+  color: var(--color-accent);
+  background: color-mix(in srgb, var(--color-accent) 5%, var(--color-surface-alt));
+  border: 1px solid color-mix(in srgb, var(--color-accent) 55%, transparent);
+  font-size: 0.78rem;
+  font-weight: 700;
+  border-radius: 999px;
+  white-space: nowrap;
+  height: 1.6rem;
+}
+
+.ongoingDot {
+  position: relative;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+
+.ongoingDot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--color-accent);
+  animation: projectBadgePulse 1600ms cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes projectBadgePulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ongoingDot::after {
+    animation: none;
+    display: none;
+  }
+}
+
+
+.summary {
+  margin-top: 0.8rem;
+  color: var(--color-body);
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+
+.meta {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1.4rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-line);
+}
+
+.meta div {
+  display: grid;
+  gap: 0.35rem;
+  padding-inline: 0.4rem;
+}
+
+.meta div:last-child {
+  justify-self: end;
+  text-align: right;
+}
+
+.meta dt {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--color-muted);
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.meta div:last-child dt {
+  justify-content: flex-end;
+}
+
+.meta dd {
+  color: var(--color-ink);
+  font-size: 0.88rem;
+}
+
+.coverage {
+  display: grid;
+  gap: 0.65rem;
+  margin-top: 1.4rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-line);
+}
+
+.coverage > p {
+  color: var(--color-muted);
+  font-size: 0.62rem;
+  font-weight: 750;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.coverage ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.coverage a {
+  display: inline-flex;
+  padding: 0.4rem 0.6rem;
+  color: var(--color-accent);
+  background: color-mix(in srgb, var(--color-accent) 5%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-accent) 18%, transparent);
+  font-size: 0.67rem;
+  font-weight: 700;
+  transition:
+    color 180ms ease,
+    background-color 180ms ease,
+    border-color 180ms ease;
+}
+
+.coverage a:hover {
+  color: var(--color-surface);
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+.coverage a:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 0.2rem;
+}
+
+.mediaHint {
+  padding: 0.4rem 0.6rem;
+  color: var(--color-brand);
+  background: var(--color-surface-alt);
+  border: 1px solid var(--color-line);
+  font-size: 0.67rem;
+  font-weight: 650;
+}
+
+.mediaHint {
+  align-self: end;
+  justify-self: start;
+  margin-top: 1.4rem;
+  color: var(--color-muted);
+}
