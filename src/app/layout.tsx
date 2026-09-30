@@ -4,8 +4,9 @@ import "./globals.css";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
 import { SERVICE_CATEGORIES } from "../data/services";
+import { SanityLive } from "@/sanity/live";
 
-const baseUrl = "https://zhizhovski-bygg.vercel.app";
+const baseUrl = "https://zhizhovskibygg.no";
 
 const organizationSchema = {
   "@context": "https://schema.org",
@@ -106,6 +107,7 @@ export default function RootLayout({
           <Footer />
         </body>
       </html>
+      <SanityLive />
       <Analytics />
     </>
   );
