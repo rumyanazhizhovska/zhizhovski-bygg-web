@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
             userAgent: "*",
             allow: "/",
         },
-        sitemap: "https://zhizhovski-bygg.vercel.app/sitemap.xml",
+        sitemap: "https://zhizhovskibygg.no/sitemap.xml",
     };
 }

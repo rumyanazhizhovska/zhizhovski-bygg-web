@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { PAGES as pages } from "@/constants/pages";
 
-const baseUrl = "https://zhizhovski-bygg.vercel.app";
+const baseUrl = "https://zhizhovskibygg.no";
 
 function normalizePath(path: string): string {
     if (!path || path === "/") {
