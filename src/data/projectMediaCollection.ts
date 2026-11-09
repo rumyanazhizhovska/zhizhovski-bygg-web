@@ -1,7 +1,7 @@
 import "server-only";
 
 import { defineQuery } from "next-sanity";
-import { sanityFetch } from "@/sanity/live";
+import { client } from "@/sanity/client";
 import type { ProjectMediaCollection } from "@/types/portfolio";
 
 const projectMediaByIdsQuery = defineQuery(`
@@ -36,11 +36,11 @@ export async function getProjectMediaByIds(
 ): Promise<ProjectMediaCollection[]> {
   if (ids.length === 0) return [];
 
-  const { data } = await sanityFetch({
-    query: projectMediaByIdsQuery,
-    params: { ids: [...ids] },
-  });
-  const collections = data as ProjectMediaCollection[];
+  const collections = await client.fetch<ProjectMediaCollection[]>(
+    projectMediaByIdsQuery,
+    { ids: [...ids] },
+    { perspective: "published", cache: "no-store" },
+  );
   const mediaById = new Map(collections.map((entry) => [entry.id, entry]));
 
   // GROQ does not preserve the order of IDs supplied in the parameter.
