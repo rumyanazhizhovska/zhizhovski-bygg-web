@@ -14,7 +14,7 @@ const projectsQuery = defineQuery(`
     "serviceIds": coalesce(serviceIds, []),
     location,
     period,
-    "media": coalesce(media[defined(@->id)]->id, [])
+    "media": coalesce(media[defined(@->_id)]->_id, [])
   }
 `);
 

@@ -7,10 +7,10 @@ import type { ProjectMediaCollection } from "@/types/portfolio";
 const projectMediaByIdsQuery = defineQuery(`
   *[
     _type == "projectMediaCollection" &&
-    id in $ids &&
+    _id in $ids &&
     type in ["single", "before-after"]
   ] {
-    id,
+    "id": _id,
     type,
     type == "single" => {
       "media": coalesce(media[defined(asset->url)] {
