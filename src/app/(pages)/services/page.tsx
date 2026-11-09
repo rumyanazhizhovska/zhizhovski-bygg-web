@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import styles from "./page.module.css";
 import ServicesOverview from "@/components/Services/ServicesOverview";
 import { SERVICE_CATEGORIES, SERVICE_COUNT } from "@/data/services";
-import { PROJECTS } from "@/data/projects";
+import { getProjects } from "@/data/projects";
 
 export const metadata: Metadata = {
   title: "Tjenester",
@@ -13,7 +13,9 @@ export const metadata: Metadata = {
   },
 };
 
-export default function ServicesPage() {
+export default async function ServicesPage() {
+  const projects = await getProjects();
+
   return (
     <main className={styles.main}>
       <section className={styles.container} aria-labelledby="services-title">
@@ -37,7 +39,7 @@ export default function ServicesPage() {
           </div>
           <div>
             <dt>Prosjekter</dt>
-            <dd>{String(PROJECTS.length).padStart(2, "0")}</dd>
+            <dd>{String(projects.length).padStart(2, "0")}</dd>
           </div>
         </dl>
       </section>

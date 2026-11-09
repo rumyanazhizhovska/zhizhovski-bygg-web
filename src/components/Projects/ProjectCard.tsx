@@ -72,7 +72,13 @@ export default function ProjectCard({
                   <CalendarDays size={14} aria-hidden="true" />
                   Periode
                 </dt>
-                <dd>{project.period}</dd>
+                <dd>
+                  {project.period.toLocaleDateString("nb-NO", {
+                    month: "long",
+                    year: "numeric",
+                    timeZone: "UTC",
+                  })}
+                </dd>
               </div>
             ) : null}
           </dl>

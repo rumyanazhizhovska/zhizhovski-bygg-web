@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
 import ProjectGallery from "@/components/Projects/ProjectGallery";
-import { PROJECTS } from "@/data/projects";
+import { getProjects } from "@/data/projects";
 import { SERVICE_CATEGORIES, SERVICE_COUNT } from "@/data/services";
 import styles from "./page.module.css";
 import Button from "@/components/Button/Button";
@@ -16,7 +16,9 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Projects() {
+export default async function Projects() {
+  const projects = await getProjects();
+
   return (
     <main className={styles.main}>
       <section className={styles.container} aria-labelledby="projects-title">
@@ -64,7 +66,7 @@ export default function Projects() {
               </div>
               <div>
                 <dt>Registrerte prosjekter</dt>
-                <dd>{String(PROJECTS.length).padStart(2, "0")}</dd>
+                <dd>{String(projects.length).padStart(2, "0")}</dd>
               </div>
             </dl>
           </aside>

@@ -45,6 +45,7 @@ export type Project = {
    */
   serviceIds: readonly ServiceItem["id"][];
   location?: string;
-  period?: string;
+  /** Month and year; use the first day of the month in UTC. */
+  period?: Date;
   media?: readonly ProjectMediaCollectionId[];
 };
