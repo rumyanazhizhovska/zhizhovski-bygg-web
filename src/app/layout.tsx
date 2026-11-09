@@ -7,27 +7,44 @@ import { SERVICE_CATEGORIES } from "../data/services";
 import { SanityLive } from "@/sanity/live";
 
 const baseUrl = "https://zhizhovskibygg.no";
+const siteName = "Zhizhovski bygg";
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": `${baseUrl}/#website`,
+  name: siteName,
+  url: baseUrl,
+  publisher: { "@id": `${baseUrl}/#organization` },
+};
 
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
   "@id": `${baseUrl}/#organization`,
-  name: "Zhizhovski Bygg",
+  name: siteName,
   url: baseUrl,
   logo: {
     "@type": "ImageObject",
     url: `${baseUrl}/white-logo.png`,
+    width: 535,
+    height: 379,
   },
 };
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
+  applicationName: siteName,
+  icons: {
+    icon: { url: "/icon.svg", type: "image/svg+xml", sizes: "any" },
+    apple: "/white-logo.png",
+  },
   alternates: {
     canonical: "/",
   },
   title: {
-    default: "Zhizhovski Bygg",
-    template: "%s | Zhizhovski Bygg",
+    default: siteName,
+    template: `%s | ${siteName}`,
   },
   description:
     "Zhizhovski Bygg tilbyr snekkerarbeid, montering, håndverkertjenester og malerarbeid med fokus på kvalitet, lokalisert i Oslo-områder.",
@@ -58,18 +75,23 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "nb_NO",
-    siteName: "Zhizhovski Bygg",
-    title: "Zhizhovski Bygg",
+    siteName,
+    title: siteName,
     description: "Profesjonelt håndverk innen snekring, montering og maling.",
     url: baseUrl,
     images: [
       {
-        url: `${baseUrl}/og-image.png`,
-        width: 1200,
-        height: 630,
-        alt: "Zhizhovski Bygg",
+        url: `${baseUrl}/white-logo.png`,
+        width: 535,
+        height: 379,
+        alt: siteName,
       },
     ],
+  },
+  twitter: {
+    card: "summary",
+    title: siteName,
+    images: [`${baseUrl}/white-logo.png`],
   },
   verification: {
     google: "1ZNr5tlIQ9sLHmUvQGLKoQR7ke7AsxjdtjS7mtSTook",
@@ -99,7 +121,7 @@ export default function RootLayout({
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{
-              __html: JSON.stringify(organizationSchema),
+              __html: JSON.stringify([organizationSchema, websiteSchema]),
             }}
           />
           <Header />
