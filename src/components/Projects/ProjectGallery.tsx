@@ -91,6 +91,11 @@ export default async function ProjectGallery() {
                               <h3>{service.title}</h3>
                               <p>{service.description}</p>
                             </div>
+                            {serviceProjects.length > 0 ? (
+                              <span className={styles.projectCount}>
+                                {`${serviceProjects.length} prosjekt${serviceProjects.length === 1 ? "" : "er"}`}
+                              </span>
+                            ) : null}
                           </header>
 
                           <div className={styles.projectGrid}>
