@@ -4,8 +4,23 @@ import styles from "./page.module.css";
 import GoogleReviewsLink from "@/components/Reviews/GoogleReviewsLink";
 import Button from "@/components/Button/Button";
 import { ArrowUpRight } from "lucide-react";
+import { client } from "@/sanity/client";
 
-export default function Home() {
+const homePagePictureQuery = `*[_type == "homeHomePagePictureType"][0]{
+  image{asset->{url}}
+}`;
+
+type HomePagePicture = {
+  image?: {
+    asset?: {
+      url?: string;
+    };
+  };
+};
+
+export default async function Home() {
+  const homePagePicture = await client.fetch<HomePagePicture | null>(homePagePictureQuery);
+
   return (
     <main className={styles.main}>
       <section className={styles.container} aria-labelledby="home-title">
@@ -39,7 +54,7 @@ export default function Home() {
           <aside className={styles.systemCard}>
             <div className={styles.photoFrame}>
               <Image
-                src="/images/20231003_183931000_iOS.jpg"
+                src={homePagePicture?.image?.asset?.url ?? "/about/hand-planing.jpg"}
                 alt="Zhizhovski Bygg prosjektfoto"
                 fill
                 sizes="(max-width: 1000px) 100vw, 34rem"
