@@ -1,10 +1,11 @@
 import { Analytics } from "@vercel/analytics/next"
 import type { Metadata } from "next";
 import "./globals.css";
-import Header from "../components/Header/Header";
-import Footer from "../components/Footer/Footer";
-import { SERVICE_CATEGORIES } from "../data/services";
+import Header from "@/components/Header/Header";
+import Footer from "@/components/Footer/Footer";
+import { SERVICE_CATEGORIES } from "@/data/services";
 import { SanityLive } from "@/sanity/live";
+import React from "react";
 
 const baseUrl = "https://zhizhovskibygg.no";
 const siteName = "Zhizhovski bygg";
